@@ -34,7 +34,7 @@ services:
         fromService:
           name: fleet-redis
           type: redis
-          property: hostport
+          property: connectionString
       - key: FLEET_SERVER_TLS
         value: 'false'
       - key: PORT
