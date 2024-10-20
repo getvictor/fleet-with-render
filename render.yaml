@@ -7,13 +7,7 @@ services:
       url: 'fleetdm/fleet:latest'
     preDeployCommand: "fleet prepare --no-prompt=true db"
     healthCheckPath: /healthz
-    disk:
-      name: installers
-      mountPath: /opt/fleet/installers
-      sizeGB: 10
     envVars:
-      - key: FLEET_SOFTWARE_INSTALLER_STORE_DIR
-        value: '/opt/fleet/installers'
       - key: FLEET_SERVER_PRIVATE_KEY
         generateValue: true
       - key: FLEET_MYSQL_ADDRESS
@@ -47,14 +41,14 @@ services:
         value: 8080
 
   - name: fleet-mysql
-    plan: free
+    plan: starter
     type: pserv
     runtime: docker
     repo: https://github.com/render-examples/mysql
     disk:
       name: mysql
       mountPath: /var/lib/mysql
-      sizeGB: 10
+      sizeGB: 2
     envVars:
       - key: MYSQL_DATABASE
         value: fleet
@@ -71,4 +65,3 @@ services:
     runtime: image
     image:
       url: 'redis:7.2.4'
-
