@@ -30,15 +30,11 @@ services:
           name: fleet-mysql
           type: pserv
           envVarKey: MYSQL_USER
-      - key: FLEET_REDIS_ADDRESS
-        fromService:
-          name: fleet-redis
-          type: redis
-          property: connectionString
       - key: FLEET_SERVER_TLS
         value: 'false'
       - key: PORT
         value: 8080
+      - fromGroup: fleet
 
   - name: fleet-mysql
     plan: starter
