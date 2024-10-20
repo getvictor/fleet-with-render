@@ -1,6 +1,6 @@
 services:
   - name: fleet
-    plan: free
+    plan: starter
     type: web
     runtime: image
     image:
